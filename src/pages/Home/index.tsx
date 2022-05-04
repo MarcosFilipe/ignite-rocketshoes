@@ -26,8 +26,8 @@ const Home = (): JSX.Element => {
   const { addProduct, cart } = useCart();
 
   const cartItemsAmount = cart.reduce((sumAmount, product) => {
-     sumAmount[product.id] =+ product.price;
-     return sumAmount;
+    sumAmount[product.id] = product.amount
+    return sumAmount;
   }, {} as CartItemsAmount)
 
   useEffect(() => {
@@ -47,10 +47,7 @@ const Home = (): JSX.Element => {
   }, []);
 
   function handleAddProduct(id: number) {
-    addProduct(id)
-      .then(res => {
-        console.log('add cart', res)
-      })
+    addProduct(id);
   }
 
   return (
